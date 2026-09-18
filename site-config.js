@@ -1,7 +1,21 @@
 const SITE_CONFIG = {
 
-    whatsapp: "9691303048",
+    // ==========================================
+    // IDENTIFICAÇÃO DA VITRINE
+    // ==========================================
 
-    instagram: "https://www.instagram.com/atelie_by_france/"
+    vitrineId:
+        "8aab0c5b-04ec-4a6d-b7bc-c1b0f5c326ac",
+
+
+    // ==========================================
+    // CONTATOS
+    // ==========================================
+
+    whatsapp:
+        "5511997621783",
+
+    instagram:
+        "https://www.instagram.com/sandra_folhados"
 
 };

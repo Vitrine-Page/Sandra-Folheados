@@ -1,137 +1,671 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 
 <head>
-
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Ateliê by France | Vitrine</title>
+    <meta name="description" content="Catálogo online">
+    <title>Vitrine | Sandra Folheados</title>
 
     <link rel="stylesheet" href="style.css">
-
+    <link rel="stylesheet" href="info-vitrine.css">
+    <link rel="stylesheet" href="brinde.css">
 </head>
-
 
 <body>
 
-    <header class="header">
+    <!-- =========================
+         HEADER
+    ========================== -->
 
-        <div class="logo">
+    <header class="site-header">
 
-            <img class="img-logo" src="logo.png" alt="Logo Ateliê France">
+        <div class="header-inner">
 
-            <span>
-                Ateliê by France
-            </span>
+            <a class="brand" href="#inicio" aria-label="Início">
+
+                <span class="brand-name">Sandra</span>
+
+                <span class="brand-line"></span>
+
+                <span class="brand-subtitle">
+                    Folheados
+                </span>
+
+            </a>
+
+            <nav class="main-nav" aria-label="Navegação principal">
+
+                <a href="#vitrine">Vitrine</a>
+
+                <a href="#categorias">Categorias</a>
+
+                <a href="#contato">Contato</a>
+
+            </nav>
+
+            <a class="header-whatsapp btn-whatsapp" href="#" target="_blank" rel="noopener noreferrer">
+                <img src="./img/whats.png" class="zap-img" alt="whatsapp logo">
+                <span>Falar no WhatsApp</span>
+            </a>
 
         </div>
-
-
-        <nav>
-
-            <a href="#vitrine">
-                Vitrine
-            </a>
-
-            <a href="#contato">
-                Contato
-            </a>
-
-        </nav>
-
-
-        <a class="btn-whatsapp" href="https://wa.me/5500000000000" target="_blank">
-            WhatsApp
-        </a>
 
     </header>
 
 
     <main>
 
-        <section class="hero">
+        <!-- =========================
+             HERO
+        ========================== -->
 
-            <div class="hero-Content">
+        <section id="inicio" class="hero-modelo">
 
-                <img class="logo-header" src="logo.png" alt="logo Atelie By France">
-                <p class="tag">
-                    ARTE • CULTURA • IDENTIDADE
+            <div class="hero-copy">
+
+                <span class="section-rule"></span>
+
+                <p class="eyebrow">
+                    COLEÇÃO SELECIONADA
                 </p>
-
 
                 <h1>
-                    Atelie By France
+                    SANDRA<br>
+                    <em>FOLHEADOS</em>
                 </h1>
 
-
-                <p>
-                    Conheça nossa coleção e encontre
-                    peças feitas para transmitir
-                    identidade e significado.
+                <p class="hero-description">
+                    Peças selecionadas para valorizar cada detalhe.
                 </p>
 
-
-                <a href="#vitrine" class="btn-primary">
-                    Ver Vitrine
+                <a class="btn-primary" href="#vitrine">
+                    Ver vitrine
+                    <span>→</span>
                 </a>
+
+            </div>
+
+            <div class="hero-photo">
+
+                <img id="hero-image" src="./img/sandra-header.png" alt="Destaque da vitrine">
 
             </div>
 
         </section>
 
 
-        <section id="vitrine" class="vitrine">
+        <!-- =========================
+             CATEGORIAS
+        ========================== -->
 
-            <div class="selection-title">
+        <section id="categorias" class="categorias-section">
+
+            <div class="section-heading">
+
+                <span class="section-rule"></span>
 
                 <p>
-                    EXPLORE
+                    EXPLORE POR CATEGORIA
                 </p>
 
+            </div>
+
+            <div class="categorias-navegacao" aria-label="Navegação das categorias">
+
+                <button
+                    class="categorias-seta"
+                    type="button"
+                    data-categorias-direcao="anterior"
+                    aria-label="Ver categorias anteriores"
+                >
+                    ←
+                </button>
+
+                <button
+                    class="categorias-seta"
+                    type="button"
+                    data-categorias-direcao="proxima"
+                    aria-label="Ver próximas categorias"
+                >
+                    →
+                </button>
+
+            </div>
+
+            <div id="categorias-grid" class="categorias-grid" aria-live="polite"></div>
+
+        </section>
+
+
+        <!-- =========================
+             BRINDE
+        ========================== -->
+
+        <section class="brinde-compra" aria-label="Brinde de compra">
+
+            <div class="brinde-compra-conteudo">
+
+                <span class="brinde-compra-linha"></span>
+
+                <p class="brinde-compra-label">
+                    UM PRESENTE PARA VOCÊ
+                </p>
 
                 <h2>
-                    Nossa vitrine
+                    Ao realizar sua compra,<br>
+                    <em>você ganha um brinde.</em>
                 </h2>
 
+                <p class="brinde-compra-texto">
+                    Um carinho especial para acompanhar sua escolha.
+                </p>
 
-                <span>
-                    Conheça nossos produtos.
-                </span>
-
-            </div>
-
-
-            <div id="produtos" class="produtos">
-                <!-- Os produtos aparecerão aqui -->
             </div>
 
         </section>
 
 
-        <section id="contato" class="contato">
+        <!-- =========================
+             PRODUTOS
+        ========================== -->
 
-            <h2>
-                Gostou de alguma coisa?
-            </h2>
+        <section id="vitrine" class="produtos-section">
+
+            <div class="section-heading section-heading-space">
+
+                <span class="section-rule"></span>
+
+                <p>
+                    DESTAQUES
+                </p>
+
+            </div>
+
+            <div class="filtro-categoria-wrap">
+
+                <button class="filtro-categoria ativo" type="button" data-categoria="__todos__">
+                    Todos
+                </button>
+
+            </div>
+
+            <div id="produtos" class="produtos-grid" aria-live="polite">
+
+                <p class="estado-produtos">
+                    Carregando produtos...
+                </p>
+
+            </div>
+
+        </section>
 
 
-            <p>
-                Entre em contato conosco para saber mais
-            </p>
+        <!-- =========================
+             EDITORIAL
+        ========================== -->
+
+        <section class="editorial-section">
+
+            <div class="editorial-photo">
+
+                <img id="editorial-image" src="./img/destaques.jpeg" alt="Peça em destaque">
+
+            </div>
+
+            <div class="editorial-content">
+
+                <div class="editorial-main">
+
+                    <span class="section-rule section-rule-light"></span>
+
+                    <h2>
+                        Encontre a peça<br>
+                        <em>que combina com você</em>
+                    </h2>
+
+                    <p class="editorial-lead">
+                        Folheados para todos os momentos.
+                    </p>
+
+                    <p>
+                        Escolha sua peça e fale diretamente pelo WhatsApp.
+                    </p>
+
+                    <a class="btn-outline" href="#vitrine">
+                        Ver peças
+                        <span>→</span>
+                    </a>
+
+                </div>
 
 
-            <div class="contato-buttons">
+                <div class="editorial-benefits">
 
-                <a href="https://wa.me/5500000000000" target="_blank" class="btn-primary btn-whatsapp">
-                    Falar no WhatsApp
+                    <p class="benefits-title">
+                        POR QUE<br>
+                        ESCOLHER NOSSA VITRINE?
+                    </p>
+
+                    <div class="benefit">
+
+                        <span>◇</span>
+
+                        <div>
+
+                            <strong>
+                                Qualidade em cada detalhe
+                            </strong>
+
+                            <small>
+                                Peças selecionadas para valorizar seu estilo.
+                            </small>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="benefit">
+
+                        <span>☆</span>
+
+                        <div>
+
+                            <strong>
+                                Variedade de estilos
+                            </strong>
+
+                            <small>
+                                Do delicado ao marcante.
+                            </small>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="benefit">
+
+                        <span>◔</span>
+
+                        <div>
+
+                            <strong>
+                                Atendimento pelo WhatsApp
+                            </strong>
+
+                            <small>
+                                Tire suas dúvidas e escolha sua peça.
+                            </small>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             INFORMAÇÕES / POLÍTICAS
+        ========================== -->
+
+        <section class="info-vitrine-section" aria-labelledby="informacoes-titulo">
+
+            <div class="info-vitrine-inner">
+
+                <div class="info-vitrine-heading">
+
+                    <span class="section-rule"></span>
+
+                    <p class="info-vitrine-eyebrow">
+                        INFORMAÇÕES IMPORTANTES
+                    </p>
+
+                    <h2 id="informacoes-titulo" class="info-vitrine-title">
+                        Atendimento, qualidade<br>
+                        <em>e condições de compra</em>
+                    </h2>
+
+                    <p class="info-vitrine-intro">
+                        Para facilitar seu pedido, reunimos aqui as principais informações
+                        sobre atendimento, peças, pagamento, envio e funcionamento da vitrine.
+                    </p>
+
+                </div>
+
+
+                <div class="info-vitrine-grid">
+
+                    <!-- ATENDIMENTO -->
+
+                    <article class="info-vitrine-card info-vitrine-card-atendimento">
+
+                        <div class="info-vitrine-card-topo">
+
+                            <span class="info-vitrine-numero">
+                                01
+                            </span>
+
+                            <span class="info-vitrine-icone" aria-hidden="true">
+                                ◇
+                            </span>
+
+                        </div>
+
+                        <h3>
+                            Atendimento
+                        </h3>
+
+                        <div class="info-vitrine-conteudo">
+
+                            <p>
+                                Trabalhamos através do WhatsApp e Instagram.
+                            </p>
+
+                            <p>
+                                Atendemos por ordem de chamada.
+                            </p>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- QUALIDADE -->
+
+                    <article class="info-vitrine-card info-vitrine-card-qualidade">
+
+                        <div class="info-vitrine-card-topo">
+
+                            <span class="info-vitrine-numero">
+                                02
+                            </span>
+
+                            <span class="info-vitrine-icone" aria-hidden="true">
+                                ✦
+                            </span>
+
+                        </div>
+
+                        <h3>
+                            Qualidade das peças
+                        </h3>
+
+                        <div class="info-vitrine-conteudo">
+
+                            <p>
+                                Todas as peças são de fabricação própria.
+                            </p>
+
+                            <p>
+                                As peças são folheadas de 3 a 7 milésimos de ouro,
+                                com verniz cataforético e acabamento antialérgico.
+                            </p>
+
+                            <p>
+                                Nossas peças têm garantia de um ano para defeitos de
+                                fábrica, sendo banho, solda ou pedrarias.
+                            </p>
+
+                            <p>
+                                Caso alguma peça não seja aprovada pelo setor de qualidade,
+                                entraremos em contato para efetuar a troca.
+                            </p>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- PAGAMENTO -->
+
+                    <article class="info-vitrine-card info-vitrine-card-pagamento">
+
+                        <div class="info-vitrine-card-topo">
+
+                            <span class="info-vitrine-numero">
+                                03
+                            </span>
+
+                            <span class="info-vitrine-icone" aria-hidden="true">
+                                ○
+                            </span>
+
+                        </div>
+
+                        <h3>
+                            Pagamento
+                        </h3>
+
+                        <div class="info-vitrine-conteudo">
+
+                            <p>
+                                Trabalhamos com atacado e varejo.
+                            </p>
+
+                            <p>
+                                O pagamento pode ser efetuado através de transferência,
+                                Pix, depósito ou aplicativo PicPay.
+                            </p>
+
+                            <p class="info-vitrine-destaque">
+                                Pagamento por Pix e transferências.
+                            </p>
+
+                            <p>
+                                As peças são separadas por ordem de pagamento.
+                            </p>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- ENVIO -->
+
+                    <article class="info-vitrine-card info-vitrine-card-envio">
+
+                        <div class="info-vitrine-card-topo">
+
+                            <span class="info-vitrine-numero">
+                                04
+                            </span>
+
+                            <span class="info-vitrine-icone" aria-hidden="true">
+                                →
+                            </span>
+
+                        </div>
+
+                        <h3>
+                            Envio & compra
+                        </h3>
+
+                        <div class="info-vitrine-conteudo">
+
+                            <p>
+                                Enviamos para todo o Brasil, com frete por conta do cliente.
+                            </p>
+
+                            <p>
+                                Os envios são realizados às terças e sextas, com pagamento
+                                efetuado um dia antes.
+                            </p>
+
+
+                            <p>
+                                Os folheados são peças delicadas e devem ser manuseados
+                                com muito cuidado.
+                            </p>
+
+                        </div>
+
+                    </article>
+
+                </div>
+
+
+                <!-- FECHAMENTO -->
+
+                <div class="info-vitrine-final">
+
+                    <div class="info-vitrine-final-content">
+
+                        <span class="info-vitrine-final-label">
+                            UM DETALHE IMPORTANTE
+                        </span>
+
+                        <p>
+                            Aguardamos seu pedido!
+                        </p>
+
+                        <small>
+                            Escolha suas peças, tire um print e fale conosco para receber
+                            seu orçamento e concluir o pedido.
+                        </small>
+
+                    </div>
+
+                    <a class="info-vitrine-final-link btn-outline" href="#contato">
+                        Fazer pedido
+                        <span>→</span>
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             INSTAGRAM / REDES SOCIAIS
+        ========================== -->
+
+        <section class="social-strip" aria-label="Redes sociais">
+
+            <div class="social-copy">
+
+                <span class="social-eyebrow">
+                    ACOMPANHE A VITRINE
+                </span>
+
+                <h2 class="social-title">
+                    Sandra Folheados
+                </h2>
+
+                <p class="social-description">
+                    Veja novidades, lançamentos e novas peças direto pelo Instagram.
+                </p>
+
+            </div>
+
+            <div class="social-instagram">
+
+                <span class="social-instagram-label">
+                    INSTAGRAM
+                </span>
+
+                <a
+                    class="social-instagram-link"
+                    href="https://www.instagram.com/sandra_folhados/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    <img
+                        src="./img/insta.webp"
+                        alt="Instagram logo"
+                        class="insta-logo"
+                    >
+
+                    <span class="social-instagram-handle">
+                        @sandra_folhados
+                    </span>
+
+                    <span class="social-instagram-arrow" aria-hidden="true">
+                        →
+                    </span>
+
                 </a>
 
+            </div>
 
-                <a href="https://instagram.com/" target="_blank" class="btn-secondary btn-instagram">
-                    Instagram
-                </a>
+        </section>
+
+
+        <!-- =========================
+             CTA / CONTATO
+        ========================== -->
+
+        <section id="contato" class="contact-section">
+
+            <div class="contact-inner">
+
+                <span class="contact-eyebrow">
+                    ATENDIMENTO PERSONALIZADO
+                </span>
+
+                <h2>
+                    Gostou de alguma peça?
+                </h2>
+
+                <p>
+                    Fale conosco e encontre a sua.
+                </p>
+
+                <div class="contact-actions">
+
+                    <a
+                        class="contact-whatsapp btn-whatsapp"
+                        href="#"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        <img
+                            src="./img/whats.png"
+                            class="zap-img"
+                            alt="whatsapp logo"
+                        >
+
+                        <span class="contact-action-text">
+                            Conversar pelo WhatsApp
+                        </span>
+
+                        <span class="cta-arrow" aria-hidden="true">
+                            →
+                        </span>
+
+                    </a>
+
+
+                    <a
+                        class="contact-instagram"
+                        href="https://www.instagram.com/sandra_folhados/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        <img
+                            src="./img/insta.webp"
+                            alt="Instagram logo"
+                            class="insta-logo"
+                        >
+
+                        <span>
+                            Conversar pelo Instagram
+                        </span>
+
+                        <span class="cta-arrow" aria-hidden="true">
+                            →
+                        </span>
+
+                    </a>
+
+                </div>
 
             </div>
 
@@ -140,44 +674,110 @@
     </main>
 
 
-    <footer>
+    <!-- =========================
+         FOOTER
+    ========================== -->
 
-        <p>
-            @ 2026 Atelie by France
-        </p>
+    <footer class="site-footer">
 
+        <div class="footer-inner">
 
-        <a href="admin.html">
-            Admin
-        </a>
+            <div class="footer-brand">
+
+                <span>
+                    Sandra
+                </span>
+
+                <small>
+                    FOLHEADOS
+                </small>
+
+            </div>
+
+            <nav class="footer-nav" aria-label="Navegação do rodapé">
+
+                <a href="#inicio">
+                    Início
+                </a>
+
+                <a href="#categorias">
+                    Categorias
+                </a>
+
+                <a href="#vitrine">
+                    Vitrine
+                </a>
+
+                <a href="#contato">
+                    Contato
+                </a>
+
+                <a href="admin.html">
+                    Admin
+                </a>
+
+            </nav>
+
+        </div>
 
     </footer>
 
-    <!-- ==========================================
-     MODAL DO PRODUTO
-     ========================================== -->
 
-    <div id="produto-modal" class="produto-modal">
+    <!-- =========================
+         MODAL PRODUTO
+    ========================== -->
+
+    <div id="produto-modal" class="produto-modal" aria-hidden="true">
 
         <div class="produto-modal-overlay"></div>
 
-        <div class="produto-modal-content">
+        <div
+            class="produto-modal-content"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="modal-nome"
+        >
 
-            <button id="fechar-modal" class="fechar-modal" aria-label="Fechar">
+            <button
+                id="fechar-modal"
+                class="fechar-modal"
+                type="button"
+                aria-label="Fechar"
+            >
                 &times;
             </button>
 
-            <img id="modal-imagem" src="" alt="">
+
+            <img
+                id="modal-imagem"
+                src=""
+                alt=""
+            >
+
 
             <div class="modal-info">
+
+                <p
+                    class="modal-category"
+                    id="modal-categoria"
+                ></p>
 
                 <h2 id="modal-nome"></h2>
 
                 <p id="modal-descricao"></p>
 
-                <div id="modal-preco" class="modal-preco"></div>
+                <div
+                    id="modal-preco"
+                    class="modal-preco"
+                ></div>
 
-                <a id="modal-whatsapp" class="btn-modal-whatsapp" href="#" target="_blank" rel="noopener noreferrer">
+                <a
+                    id="modal-whatsapp"
+                    class="btn-modal-whatsapp"
+                    href="#"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
                     Falar no WhatsApp
                 </a>
 
@@ -186,7 +786,12 @@
         </div>
 
     </div>
-    
+
+
+    <!-- =========================
+         SCRIPTS
+    ========================== -->
+
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
     <script src="config.js"></script>

@@ -1,141 +1,679 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Admin - Ateliê France</title>
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
-    <link rel="stylesheet" href="admin.css">
+    <title>Admin | Sandra Folheados</title>
+
+    <meta
+        name="description"
+        content="Painel administrativo da vitrine Sandra Folheados."
+    >
+
+    <link
+        rel="stylesheet"
+        href="admin.css"
+    >
 </head>
 
 <body>
 
+    <!-- =====================================================
+         CABEÇALHO
+         ===================================================== -->
+
     <header class="admin-header">
 
-        <h1>Painel Administrativo</h1>
+        <div class="admin-header-brand">
 
-        <div class="admin-menu">
+            <a
+                href="index.html"
+                aria-label="Voltar para a vitrine Sandra Folheados"
+                class="admin-brand-link"
+            >
+                Sandra Folheados
+            </a>
 
-            <a href="index.html">
+            <span class="admin-brand-subtitle">
+                Administração
+            </span>
+
+        </div>
+
+        <nav
+            class="admin-menu"
+            aria-label="Navegação administrativa"
+        >
+
+            <a
+                href="index.html"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="admin-menu-link"
+            >
                 Ver vitrine
             </a>
 
-            <button id="btn-sair">
+            <button
+                id="btn-sair"
+                type="button"
+                class="admin-menu-button"
+            >
                 Sair
             </button>
 
-        </div>
+        </nav>
 
     </header>
 
 
+    <!-- =====================================================
+         CONTEÚDO PRINCIPAL
+         ===================================================== -->
+
     <main class="admin-container">
 
-        <section class="form-section">
+        <!-- =================================================
+             CADASTRO
+             ================================================= -->
 
-            <h2>
-                Adicionar produto
-            </h2>
+        <section
+            class="form-section"
+            aria-labelledby="titulo-cadastro"
+        >
+
+            <header class="form-header">
+
+                <div>
+
+                    <h1 id="titulo-cadastro">
+                        Produtos
+                    </h1>
+
+                    <p class="form-intro">
+                        Cadastre e organize os produtos da sua vitrine.
+                    </p>
+
+                </div>
+
+            </header>
 
 
-            <form id="produto-form">
+            <!-- =================================================
+                 CATEGORIAS
+                 ================================================= -->
 
-                <div class="campo">
+            <div
+                id="area-categorias"
+                class="area-categorias"
+                aria-label="Categorias"
+            >
+                <!-- Inserido pelo admin.js -->
+            </div>
 
-                    <label for="nome">
-                        Nome do produto
-                    </label>
 
-                    <input type="text" id="nome" required>
+            <!-- =================================================
+                 ESCOLHA DO CADASTRO
+                 ================================================= -->
+
+            <section
+                id="selecao-tipo-cadastro"
+                class="selecao-tipo-cadastro"
+                aria-labelledby="titulo-selecao-cadastro"
+            >
+
+                <div class="selecao-tipo-cadastro-header">
+
+                    <h2 id="titulo-selecao-cadastro">
+                        O que você quer cadastrar?
+                    </h2>
 
                 </div>
 
 
-                <div class="campo">
+                <div class="opcoes-cadastro">
 
-                    <label for="descricao">
-                        Descrição
-                    </label>
+                    <!-- CADASTRO INDIVIDUAL -->
 
-                    <textarea id="descricao" rows="4"></textarea>
+                    <button
+                        type="button"
+                        id="btn-escolher-produto"
+                        class="opcao-cadastro opcao-cadastro-individual"
+                        aria-describedby="descricao-cadastro-individual"
+                    >
+
+                        <span class="opcao-cadastro-numero">
+                            01
+                        </span>
+
+                        <span class="opcao-cadastro-conteudo">
+
+                            <strong>
+                                Um produto
+                            </strong>
+
+                            <span id="descricao-cadastro-individual">
+                                Preencher os dados de uma peça.
+                            </span>
+
+                        </span>
+
+                        <span
+                            class="opcao-cadastro-indicador"
+                            aria-hidden="true"
+                        >
+                            INDIVIDUAL
+                        </span>
+
+                        <span
+                            class="opcao-cadastro-seta"
+                            aria-hidden="true"
+                        >
+                            →
+                        </span>
+
+                    </button>
+
+
+                    <!-- CADASTRO EM LOTE -->
+
+                    <button
+                        type="button"
+                        id="btn-escolher-lote"
+                        class="opcao-cadastro opcao-cadastro-lote"
+                        aria-describedby="descricao-cadastro-lote"
+                    >
+
+                        <span class="opcao-cadastro-numero">
+                            02
+                        </span>
+
+                        <span class="opcao-cadastro-conteudo">
+
+                            <strong>
+                                Vários produtos
+                            </strong>
+
+                            <span id="descricao-cadastro-lote">
+                                Adicionar várias peças de uma vez.
+                            </span>
+
+                        </span>
+
+                        <span
+                            class="opcao-cadastro-indicador"
+                            aria-hidden="true"
+                        >
+                            EM LOTE
+                        </span>
+
+                        <span
+                            class="opcao-cadastro-seta"
+                            aria-hidden="true"
+                        >
+                            →
+                        </span>
+
+                    </button>
 
                 </div>
 
-
-                <div class="campo">
-
-                    <label for="preco">
-                        Preço
-                    </label>
-
-                    <input type="number" id="preco" step="0.01" min="0" required>
-
-                </div>
+            </section>
 
 
-                <div class="campo">
+            <!-- =================================================
+                 ÁREA DO CADASTRO
+                 ================================================= -->
 
-                    <label for="categoria">
-                        Categoria
-                    </label>
+            <div
+                id="area-cadastro"
+                class="area-cadastro"
+                hidden
+            >
 
-                    <input type="text" id="categoria">
+                <!-- MODO ATUAL -->
 
-                </div>
+                <div
+                    id="indicador-modo-cadastro"
+                    class="indicador-modo-cadastro"
+                    aria-live="polite"
+                >
 
+                    <div class="indicador-modo-cadastro-texto">
 
-                <div class="campo">
+                        <span class="indicador-modo-cadastro-label">
+                            CADASTRANDO
+                        </span>
 
-                    <label for="imagem">
-                        Imagem do produto
-                    </label>
+                        <strong id="indicador-modo-cadastro-titulo">
+                            Produto
+                        </strong>
 
-                    <input type="file" id="imagem" accept="image/*">
-
-                    <div id="preview-container" class="preview-container">
-                        <p>Nenhuma imagem selecionada</p>
                     </div>
 
+                    <span
+                        id="indicador-modo-cadastro-tipo"
+                        class="indicador-modo-cadastro-tipo"
+                    >
+                        INDIVIDUAL
+                    </span>
+
                 </div>
 
 
-                <button type="submit" class="btn-salvar">
-                    Salvar produto
+                <!-- VOLTAR -->
+
+                <button
+                    type="button"
+                    id="btn-voltar-cadastro"
+                    class="btn-voltar-cadastro"
+                >
+                    ← Voltar
                 </button>
 
 
-                <p id="mensagem"></p>
+                <!-- FORMULÁRIO -->
 
-            </form>
+                <form
+                    id="produto-form"
+                    class="produto-form"
+                >
 
-        </section>
+                    <!-- =========================================
+                         CADASTRO INDIVIDUAL
+                         ========================================= -->
+
+                    <div
+                        id="bloco-cadastro-individual"
+                        class="bloco-cadastro-individual"
+                        hidden
+                    >
+
+                        <!-- MODO -->
+
+                        <div class="modo-cadastro-banner modo-cadastro-banner-individual">
+
+                            <div>
+
+                                <span class="modo-cadastro-banner-label">
+                                    CADASTRO
+                                </span>
+
+                                <h2>
+                                    Produto único
+                                </h2>
+
+                                <p>
+                                    Preencha os dados da peça.
+                                </p>
+
+                            </div>
+
+                        </div>
 
 
-        <section class="produtos-section">
+                        <!-- INFORMAÇÕES -->
 
-            <h2>
-                Produtos cadastrados
-            </h2>
+                        <section
+                            class="form-card"
+                            aria-labelledby="titulo-informacoes"
+                        >
 
-            <div id="lista-produtos">
+                            <div class="form-card-header">
 
-                Carregando produtos...
+                                <div class="form-card-numero">
+                                    01
+                                </div>
+
+                                <div>
+
+                                    <h2 id="titulo-informacoes">
+                                        Informações
+                                    </h2>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="campo">
+
+                                <label for="nome">
+                                    Nome
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="nome"
+                                    name="nome"
+                                    maxlength="120"
+                                    autocomplete="off"
+                                    placeholder="Ex.: Colar Dourado"
+                                    required
+                                >
+
+                            </div>
+
+
+                            <div class="campo">
+
+                                <label for="descricao">
+                                    Descrição
+                                </label>
+
+                                <textarea
+                                    id="descricao"
+                                    name="descricao"
+                                    rows="4"
+                                    maxlength="500"
+                                    placeholder="Descrição do produto"
+                                ></textarea>
+
+                            </div>
+
+
+                            <div class="campos-grid">
+
+                                <div class="campo">
+
+                                    <label for="preco">
+                                        Preço
+                                    </label>
+
+                                    <div class="campo-preco">
+
+                                        <span>
+                                            R$
+                                        </span>
+
+                                        <input
+                                            type="number"
+                                            id="preco"
+                                            name="preco"
+                                            min="0"
+                                            step="0.01"
+                                            inputmode="decimal"
+                                            placeholder="0,00"
+                                            required
+                                        >
+
+                                    </div>
+
+                                </div>
+
+
+                                <div class="campo">
+
+                                    <label for="categoria">
+                                        Categoria
+                                    </label>
+
+                                    <select
+                                        id="categoria"
+                                        name="categoria"
+                                        required
+                                    >
+
+                                        <option value="">
+                                            Selecione
+                                        </option>
+
+                                    </select>
+
+                                </div>
+
+                            </div>
+
+                        </section>
+
+
+                        <!-- IMAGEM -->
+
+                        <section
+                            class="form-card"
+                            aria-labelledby="titulo-imagens"
+                        >
+
+                            <div class="form-card-header">
+
+                                <div class="form-card-numero">
+                                    02
+                                </div>
+
+                                <div>
+
+                                    <h2 id="titulo-imagens">
+                                        Imagem
+                                    </h2>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="campo campo-imagem">
+
+                                <label for="imagem">
+                                    Foto do produto
+                                </label>
+
+                                <label
+                                    for="imagem"
+                                    class="upload-area"
+                                >
+
+                                    <span class="upload-area-titulo">
+                                        Selecionar imagem
+                                    </span>
+
+                                    <span class="upload-area-texto">
+                                        Escolha uma foto
+                                    </span>
+
+                                    <span class="upload-area-formatos">
+                                        JPG, PNG ou WEBP
+                                    </span>
+
+                                </label>
+
+
+                                <input
+                                    type="file"
+                                    id="imagem"
+                                    name="imagem"
+                                    accept="image/*"
+                                >
+
+
+                                <div
+                                    id="preview-container"
+                                    class="preview-container"
+                                    aria-live="polite"
+                                >
+
+                                    <p>
+                                        Nenhuma imagem selecionada.
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+                        </section>
+
+
+                        <!-- SALVAR -->
+
+                        <section
+                            class="form-acoes"
+                            aria-label="Salvar produto"
+                        >
+
+                            <div class="form-acoes-texto">
+
+                                <strong>
+                                    Tudo pronto?
+                                </strong>
+
+                                <span>
+                                    Salve o produto para adicioná-lo à vitrine.
+                                </span>
+
+                            </div>
+
+                            <button
+                                type="submit"
+                                class="btn-salvar"
+                            >
+                                Salvar produto
+                            </button>
+
+                            <p
+                                id="mensagem"
+                                role="status"
+                                aria-live="polite"
+                            ></p>
+
+                        </section>
+
+                    </div>
+
+
+                    <!-- =========================================
+                         CADASTRO EM LOTE
+                         ========================================= -->
+
+                    <div
+                        id="area-cadastro-lote"
+                        class="area-cadastro-lote"
+                        hidden
+                    >
+
+                        <div class="modo-cadastro-banner modo-cadastro-banner-lote">
+
+                            <div>
+
+                                <span class="modo-cadastro-banner-label">
+                                    CADASTRO
+                                </span>
+
+                                <h2>
+                                    Vários produtos
+                                </h2>
+
+                                <p>
+                                    Escolha as imagens e defina os dados.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <!--
+                            O admin.js insere aqui:
+
+                            - categoria
+                            - seleção de imagens
+                            - nome para todos
+                            - preço para todos
+                            - descrição para todos
+                            - produtos selecionados
+                            - botão de cadastro
+
+                            Os IDs utilizados pelo JS são
+                            mantidos pelo script.
+                        -->
+
+                    </div>
+
+                </form>
 
             </div>
 
         </section>
 
+
+        <!-- =================================================
+             PRODUTOS CADASTRADOS
+             ================================================= -->
+
+        <details
+            class="produtos-section"
+            aria-labelledby="titulo-produtos"
+        >
+
+            <summary class="produtos-toggle">
+
+                <div class="produtos-toggle-texto">
+
+                    <h2 id="titulo-produtos">
+                        Produtos cadastrados
+                    </h2>
+
+                    <p>
+                        Ver e gerenciar produtos da vitrine.
+                    </p>
+
+                </div>
+
+                <span
+                    class="produtos-toggle-indicador"
+                    aria-hidden="true"
+                >
+
+                    <span class="produtos-toggle-mais">
+                        +
+                    </span>
+
+                    <span class="produtos-toggle-menos">
+                        −
+                    </span>
+
+                </span>
+
+            </summary>
+
+
+            <div
+                id="lista-produtos"
+                aria-live="polite"
+                aria-busy="true"
+            >
+
+                <div class="lista-carregando">
+
+                    <span>
+                        Carregando produtos...
+                    </span>
+
+                </div>
+
+            </div>
+
+        </details>
+
     </main>
 
 
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <!-- =====================================================
+         SCRIPTS
+         ===================================================== -->
+
+    <script
+        src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"
+    ></script>
 
     <script src="config.js"></script>
+
+    <script src="site-config.js"></script>
 
     <script src="admin.js"></script>
 
 </body>
-
 </html>

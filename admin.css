@@ -1,318 +1,3265 @@
-* {
-    margin: 0;
-    padding: 0;
+/* =========================================================
+   SANDRA FOLHEADOS — ÁREA ADMINISTRATIVA
+   CSS COMPLETO
+   Compatível com admin.js + HTML atual
+   ========================================================= */
+
+
+/* =========================================================
+   1. VARIÁVEIS
+========================================================= */
+
+:root {
+    --bg: #f6f3ef;
+    --surface: #ffffff;
+    --surface-subtle: #fbfaf8;
+    --surface-muted: #f1ece6;
+
+    --text: #2e2521;
+    --text-muted: #70645e;
+    --text-soft: #958780;
+
+    --line: #e4dcd4;
+    --line-strong: #d1c3b7;
+
+    --brand: #4b2c25;
+    --brand-hover: #35201b;
+
+    --accent: #aa8148;
+    --accent-soft: #f7efe1;
+
+    --success: #356347;
+    --success-bg: #edf6ef;
+
+    --danger: #a33f39;
+    --danger-bg: #fff0ef;
+
+    --focus: rgba(170, 129, 72, .24);
+
+    --shadow-sm:
+        0 4px 14px rgba(53, 37, 29, .045);
+
+    --shadow-md:
+        0 10px 28px rgba(53, 37, 29, .07);
+
+    --shadow-lg:
+        0 18px 45px rgba(53, 37, 29, .10);
+
+    --radius-lg: 18px;
+    --radius-md: 12px;
+    --radius-sm: 8px;
+
+    --font-sans:
+        Inter,
+        ui-sans-serif,
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+
+    --font-serif:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    --transition-fast: .18s ease;
+    --transition: .25s ease;
+}
+
+
+/* =========================================================
+   2. RESET / BASE
+========================================================= */
+
+*,
+*::before,
+*::after {
     box-sizing: border-box;
 }
 
+html {
+    background: var(--bg);
+    scroll-behavior: smooth;
+}
+
 body {
-    font-family: Arial, sans-serif;
-    background: #f5f5f5;
-    color: #222;
+    min-width: 320px;
+    margin: 0;
+
+    background: var(--bg);
+    color: var(--text);
+
+    font-family: var(--font-sans);
+    font-size: 16px;
+    line-height: 1.5;
+
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+}
+
+button,
+input,
+select,
+textarea {
+    font: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+button:disabled {
+    cursor: not-allowed;
+    opacity: .58;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+}
+
+[hidden] {
+    display: none !important;
+}
+
+*:focus-visible {
+    outline: 3px solid var(--focus);
+    outline-offset: 2px;
 }
 
 
-/* HEADER */
+/* =========================================================
+   3. HEADER
+========================================================= */
 
 .admin-header {
-    background: #222;
-    color: white;
+    min-height: 76px;
 
-    padding: 20px 7%;
+    padding:
+        0
+        max(
+            24px,
+            calc((100vw - 1180px) / 2)
+        );
 
     display: flex;
+    align-items: center;
     justify-content: space-between;
-    align-items: center;
+
+    gap: 24px;
+
+    background: var(--brand);
+    color: #fff;
+
+    border-bottom:
+        1px solid
+        rgba(255, 255, 255, .14);
 }
 
-.admin-header a {
-    color: white;
+.admin-header-brand {
+    min-width: 0;
+
+    display: flex;
+    align-items: center;
+
+    gap: 13px;
+}
+
+.admin-brand-link {
+    color: #fff;
+
+    font-family: var(--font-serif);
+
+    font-size:
+        clamp(
+            1.3rem,
+            2vw,
+            1.55rem
+        );
+
+    font-weight: 400;
+
+    letter-spacing: -.025em;
+
     text-decoration: none;
+
+    transition:
+        color var(--transition-fast);
+}
+
+.admin-brand-link:hover {
+    color: #fff8ef;
+}
+
+.admin-brand-subtitle {
+    padding-left: 13px;
+
+    border-left:
+        1px solid
+        rgba(255, 255, 255, .30);
+
+    color:
+        rgba(255, 255, 255, .70);
+
+    font-size: .68rem;
+    font-weight: 700;
+
+    letter-spacing: .10em;
+    text-transform: uppercase;
 }
 
 
-/* CONTAINER */
-
-.admin-container {
-    width: 90%;
-    max-width: 1100px;
-
-    margin: 50px auto;
-
-    display: grid;
-
-    grid-template-columns:
-        1fr 1fr;
-
-    gap: 40px;
-}
-
-
-/* SEÇÕES */
-
-.form-section,
-.produtos-section {
-    background: white;
-
-    padding: 30px;
-
-    border-radius: 15px;
-}
-
-
-/* TÍTULOS */
-
-h2 {
-    margin-bottom: 25px;
-}
-
-
-/* CAMPOS */
-
-.campo {
-    margin-bottom: 20px;
-}
-
-.campo label {
-    display: block;
-
-    margin-bottom: 8px;
-
-    font-weight: bold;
-}
-
-.campo input,
-.campo textarea {
-    width: 100%;
-
-    padding: 12px;
-
-    border: 1px solid #ddd;
-
-    border-radius: 8px;
-
-    font-size: 15px;
-}
-
-
-/* BOTÃO */
-
-.btn-salvar {
-    width: 100%;
-
-    padding: 14px;
-
-    border: none;
-
-    border-radius: 8px;
-
-    background: #222;
-
-    color: white;
-
-    font-size: 16px;
-
-    cursor: pointer;
-}
-
-.btn-salvar:hover {
-    opacity: 0.85;
-}
-
-
-/* MENSAGEM */
-
-#mensagem {
-    margin-top: 15px;
-}
-
-
-/* RESPONSIVO */
-
-@media (max-width: 800px) {
-
-    .admin-container {
-        grid-template-columns: 1fr;
-    }
-
-}
-
-.produto-admin {
-    display: flex;
-    gap: 15px;
-    padding: 15px;
-    margin-bottom: 15px;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    background: #fafafa;
-}
-
-.produto-admin img {
-    width: 100px;
-    height: 100px;
-    object-fit: cover;
-    border-radius: 8px;
-}
-
-.produto-admin-info {
-    flex: 1;
-}
-
-.produto-admin-info h3 {
-    margin-bottom: 8px;
-}
-
-.produto-admin-info p {
-    margin-bottom: 6px;
-    color: #555;
-}
-
-.produto-admin-info strong {
-    display: block;
-    margin-bottom: 8px;
-    font-size: 18px;
-}
-
-.acoes-produto {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin-top: 15px;
-}
-
-.acoes-produto button,
-.btn-cancelar {
-    border: none;
-    padding: 9px 13px;
-    border-radius: 7px;
-    cursor: pointer;
-    font-size: 14px;
-}
-
-.btn-editar {
-    background: #e8e8e8;
-    color: #222;
-}
-
-.btn-status {
-    background: #e8e8e8;
-    color: #222;
-}
-
-.btn-excluir {
-    background: #222;
-    color: white;
-}
-
-.btn-cancelar {
-    width: 100%;
-    margin-top: 10px;
-    background: #ddd;
-    color: #222;
-}
-
-.acoes-produto button:hover,
-.btn-cancelar:hover {
-    opacity: 0.75;
-}
-
-.login-container {
-    min-height: 100vh;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    padding: 20px;
-}
-
-.login-box {
-    width: 100%;
-    max-width: 420px;
-
-    background: white;
-
-    padding: 40px;
-
-    border-radius: 15px;
-
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-}
-
-.login-box h1 {
-    margin-bottom: 10px;
-}
-
-.login-box > p {
-    margin-bottom: 30px;
-    color: #666;
-}
-
-#login-mensagem {
-    margin-top: 15px;
-    text-align: center;
-}
-
+/* =========================================================
+   4. MENU
+========================================================= */
 
 .admin-menu {
     display: flex;
     align-items: center;
-    gap: 15px;
+    gap: 8px;
 }
 
-.admin-menu a {
-    color: white;
-    text-decoration: none;
-}
+.admin-menu-link,
+.admin-menu-button {
+    min-height: 40px;
+    padding: 0 13px;
 
-#btn-sair {
-    border: 1px solid white;
-    background: transparent;
-    color: white;
-    padding: 8px 15px;
-    border-radius: 7px;
-    cursor: pointer;
-}
-
-#btn-sair:hover {
-    background: white;
-    color: #222;
-}
-
-
-/* ==========================================
-   PRÉVIA DA IMAGEM
-   ========================================== */
-
-.preview-container {
-    width: 100%;
-    min-height: 220px;
-
-    margin-top: 15px;
-
-    border: 2px dashed #ddd;
-    border-radius: 12px;
-
-    display: flex;
+    display: inline-flex;
     align-items: center;
     justify-content: center;
 
+    border:
+        1px solid
+        transparent;
+
+    border-radius:
+        var(--radius-sm);
+
+    background: transparent;
+    color: #fff;
+
+    font-size: .875rem;
+    font-weight: 650;
+
+    text-decoration: none;
+
+    transition:
+        background-color var(--transition-fast),
+        border-color var(--transition-fast),
+        transform var(--transition-fast);
+}
+
+.admin-menu-link:hover {
+    background:
+        rgba(255, 255, 255, .10);
+
+    transform:
+        translateY(-1px);
+}
+
+.admin-menu-button {
+    border-color:
+        rgba(255, 255, 255, .38);
+}
+
+.admin-menu-button:hover:not(:disabled) {
+    border-color: #fff;
+
+    background:
+        rgba(255, 255, 255, .09);
+
+    transform:
+        translateY(-1px);
+}
+
+
+/* =========================================================
+   5. CONTAINER PRINCIPAL
+========================================================= */
+
+.admin-container {
+    width:
+        min(
+            calc(100% - 40px),
+            1120px
+        );
+
+    margin: 0 auto;
+
+    padding:
+        40px
+        0
+        64px;
+
+    display: grid;
+
+    gap: 24px;
+}
+
+
+/* =========================================================
+   6. BLOCOS PRINCIPAIS
+========================================================= */
+
+.form-section,
+.produtos-section {
     overflow: hidden;
 
-    background: #fafafa;
+    border:
+        1px solid
+        var(--line);
 
-    color: #888;
+    border-radius:
+        var(--radius-lg);
+
+    background:
+        var(--surface);
+
+    box-shadow:
+        var(--shadow-md);
+}
+
+.form-section {
+    padding:
+        clamp(
+            24px,
+            4vw,
+            42px
+        );
+}
+
+
+/* =========================================================
+   7. CABEÇALHO
+========================================================= */
+
+.form-header {
+    margin-bottom: 32px;
+
+    padding-bottom: 24px;
+
+    border-bottom:
+        1px solid
+        var(--line);
+}
+
+.form-header h1,
+.selecao-tipo-cadastro h2,
+.form-card h2,
+.cadastro-lote-topo h2,
+.produtos-toggle h2 {
+    color: var(--brand);
+
+    font-family:
+        var(--font-serif);
+
+    font-weight: 400;
+
+    letter-spacing: -.025em;
+}
+
+.form-header h1 {
+    margin: 0;
+
+    font-size:
+        clamp(
+            2rem,
+            4.5vw,
+            2.7rem
+        );
+
+    line-height: 1.05;
+}
+
+.form-intro {
+    max-width: 600px;
+
+    margin:
+        10px
+        0
+        0;
+
+    color:
+        var(--text-muted);
+
+    font-size: .98rem;
+}
+
+
+/* =========================================================
+   8. CATEGORIAS
+========================================================= */
+
+.area-categorias {
+    margin-bottom: 28px;
+}
+
+#gerenciador-categorias {
+    padding: 22px;
+
+    border:
+        1px solid
+        var(--line);
+
+    border-radius:
+        var(--radius-md);
+
+    background:
+        var(--surface-subtle);
+}
+
+#gerenciador-categorias h2 {
+    margin: 0;
+
+    color: var(--brand);
+
+    font-size: 1.05rem;
+    font-weight: 750;
+}
+
+#gerenciador-categorias > p {
+    margin:
+        5px
+        0
+        16px;
+
+    color:
+        var(--text-muted);
+
+    font-size: .875rem;
+}
+
+
+/* =========================================================
+   9. FORMULÁRIO DE CATEGORIAS
+========================================================= */
+
+#categorias-admin-form {
+    width:
+        min(
+            100%,
+            480px
+        );
+
+    margin-inline: auto;
+
+    display: flex;
+
+    gap: 10px;
+}
+
+#categorias-admin-nome {
+    min-width: 0;
+
+    flex: 1;
+}
+
+#categorias-admin-form button {
+    min-height: 46px;
+
+    padding:
+        0
+        16px;
+
+    border:
+        1px solid
+        var(--brand);
+
+    border-radius:
+        var(--radius-sm);
+
+    background:
+        var(--brand);
+
+    color: #fff;
+
+    font-size: .875rem;
+    font-weight: 700;
+
+    white-space: nowrap;
+
+    transition:
+        background-color var(--transition-fast),
+        border-color var(--transition-fast),
+        transform var(--transition-fast);
+}
+
+#categorias-admin-form button:hover {
+    border-color:
+        var(--brand-hover);
+
+    background:
+        var(--brand-hover);
+
+    transform:
+        translateY(-1px);
+}
+
+#categoria-admin-status {
+    min-height: 1.4em;
+
+    margin:
+        10px
+        0
+        0;
+
+    color:
+        var(--text-muted);
+
+    font-size: .82rem;
+}
+
+
+/* =========================================================
+   10. LISTA DE CATEGORIAS
+========================================================= */
+
+#lista-categorias-admin {
+    margin-top: 14px;
+
+    display: flex;
+    flex-wrap: wrap;
+
+    gap: 8px;
+}
+
+#lista-categorias-admin > span:not(.categoria-admin-item) {
+    color:
+        var(--text-soft);
+
+    font-size: .84rem;
+}
+
+.categoria-admin-item {
+    min-height: 32px;
+
+    padding:
+        3px
+        5px
+        3px
+        10px;
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 5px;
+
+    border:
+        1px solid
+        var(--line-strong);
+
+    border-radius: 999px;
+
+    background: #fff;
+
+    color:
+        var(--text);
+
+    font-size: .8rem;
+
+    font-weight: 650;
+}
+
+.categoria-admin-item button {
+    width: 24px;
+    height: 24px;
+
+    padding: 0;
+
+    border: 0;
+    border-radius: 50%;
+
+    background: transparent;
+
+    color:
+        var(--text-muted);
+
+    font-size: 1.2rem;
+
+    line-height: 1;
+
+    transition:
+        background-color var(--transition-fast),
+        color var(--transition-fast);
+}
+
+.categoria-admin-item button:hover {
+    background:
+        var(--danger-bg);
+
+    color:
+        var(--danger);
+}
+
+
+/* =========================================================
+   11. ESCOLHA DO CADASTRO
+========================================================= */
+
+.selecao-tipo-cadastro {
+    padding-top: 4px;
+}
+
+.selecao-tipo-cadastro-header {
+    margin-bottom: 15px;
+}
+
+.selecao-tipo-cadastro h2 {
+    margin: 0;
+
+    font-size: 1.5rem;
+}
+
+.opcoes-cadastro {
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            2,
+            minmax(0, 1fr)
+        );
+
+    gap: 14px;
+}
+
+.opcao-cadastro {
+    width: 100%;
+
+    min-height: 142px;
+
+    padding: 22px;
+
+    display: grid;
+
+    grid-template-columns:
+        auto
+        minmax(0, 1fr)
+        auto;
+
+    align-items: center;
+
+    gap: 14px;
+
+    border:
+        1px solid
+        var(--line-strong);
+
+    border-radius:
+        var(--radius-md);
+
+    background:
+        var(--surface);
+
+    color:
+        var(--text);
+
+    text-align: left;
+
+    transition:
+        border-color var(--transition-fast),
+        background-color var(--transition-fast),
+        box-shadow var(--transition-fast),
+        transform var(--transition-fast);
+}
+
+.opcao-cadastro:hover {
+    border-color:
+        var(--accent);
+
+    background:
+        #fffcf7;
+
+    box-shadow:
+        var(--shadow-sm);
+
+    transform:
+        translateY(-2px);
+}
+
+.opcao-cadastro-numero,
+.form-card-numero {
+    width: 34px;
+    height: 34px;
+
+    display: inline-grid;
+
+    place-items: center;
+
+    border-radius: 50%;
+
+    background:
+        var(--accent-soft);
+
+    color:
+        #735324;
+
+    font-size: .72rem;
+
+    font-weight: 800;
+
+    letter-spacing: .04em;
+}
+
+.opcao-cadastro-conteudo {
+    min-width: 0;
+
+    display: grid;
+
+    gap: 4px;
+}
+
+.opcao-cadastro-conteudo strong {
+    color:
+        var(--brand);
+
+    font-size: 1rem;
+
+    font-weight: 750;
+}
+
+.opcao-cadastro-conteudo > span {
+    color:
+        var(--text-muted);
+
+    font-size: .86rem;
+
+    line-height: 1.45;
+}
+
+.opcao-cadastro-indicador {
+    grid-column: 2;
+
+    color:
+        var(--text-soft);
+
+    font-size: .62rem;
+
+    font-weight: 800;
+
+    letter-spacing: .09em;
+}
+
+.opcao-cadastro-seta {
+    grid-column: 3;
+    grid-row: 1 / span 2;
+
+    color:
+        var(--accent);
+
+    font-size: 1.3rem;
+
+    transition:
+        transform
+        var(--transition-fast);
+}
+
+.opcao-cadastro:hover .opcao-cadastro-seta {
+    transform:
+        translateX(3px);
+}
+
+
+/* =========================================================
+   12. ÁREA DE CADASTRO
+========================================================= */
+
+.area-cadastro {
+    display: grid;
+
+    gap: 18px;
+}
+
+
+/* =========================================================
+   13. TÍTULO PRINCIPAL DO MODO
+========================================================= */
+
+.indicador-modo-cadastro {
+    width: 100%;
+
+    padding:
+        34px
+        22px
+        36px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 14px;
+
+    border:
+        1px solid
+        #e2d5c8;
+
+    border-radius:
+        var(--radius-lg);
+
+    background:
+        linear-gradient(
+            180deg,
+            #fffdf9 0%,
+            #fbf7f1 100%
+        );
+
     text-align: center;
+
+    box-shadow:
+        0
+        8px
+        24px
+        rgba(53, 37, 29, .045);
+}
+
+.indicador-modo-cadastro-texto {
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    gap: 5px;
+}
+
+.indicador-modo-cadastro-label {
+    color:
+        var(--accent);
+
+    font-size: .68rem;
+
+    font-weight: 800;
+
+    letter-spacing: .22em;
+
+    text-transform: uppercase;
+}
+
+.indicador-modo-cadastro-texto strong {
+    display: block;
+
+    color:
+        var(--brand);
+
+    font-family:
+        var(--font-serif);
+
+    font-size:
+        clamp(
+            2.5rem,
+            5vw,
+            4.2rem
+        );
+
+    line-height: .92;
+
+    font-weight: 400;
+
+    letter-spacing: -.045em;
+}
+
+.indicador-modo-cadastro-tipo {
+    min-width: 110px;
+
+    padding:
+        7px
+        13px;
+
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border:
+        1px solid
+        rgba(75, 44, 37, .10);
+
+    border-radius:
+        999px;
+
+    background:
+        var(--brand);
+
+    color: #fff;
+
+    font-size: .66rem;
+
+    font-weight: 800;
+
+    letter-spacing: .12em;
+}
+
+
+/* =========================================================
+   14. BOTÃO VOLTAR
+========================================================= */
+
+.btn-voltar-cadastro {
+    width: fit-content;
+
+    min-height: 44px;
+
+    margin:
+        2px
+        auto
+        2px;
+
+    padding:
+        0
+        18px;
+
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border:
+        1px solid
+        var(--line-strong);
+
+    border-radius:
+        999px;
+
+    background:
+        #fff;
+
+    color:
+        var(--brand);
+
+    font-size: .82rem;
+
+    font-weight: 750;
+
+    text-decoration: none;
+
+    box-shadow:
+        0
+        3px
+        10px
+        rgba(53, 37, 29, .05);
+
+    transition:
+        background-color var(--transition-fast),
+        border-color var(--transition-fast),
+        color var(--transition-fast),
+        transform var(--transition-fast),
+        box-shadow var(--transition-fast);
+}
+
+.btn-voltar-cadastro:hover {
+    border-color:
+        var(--accent);
+
+    background:
+        var(--accent-soft);
+
+    color:
+        var(--brand);
+
+    transform:
+        translateY(-2px);
+
+    box-shadow:
+        0
+        7px
+        18px
+        rgba(53, 37, 29, .08);
+}
+
+.btn-voltar-cadastro:active {
+    transform:
+        translateY(0);
+}
+
+
+/* =========================================================
+   15. BOTÃO CANCELAR
+========================================================= */
+
+.btn-cancelar,
+#btn-cancelar {
+    width: fit-content;
+
+    min-height: 38px;
+
+    padding:
+        0
+        4px;
+
+    border: 0;
+
+    background:
+        transparent;
+
+    color:
+        var(--text-muted);
+
+    font-size: .875rem;
+
+    font-weight: 700;
+
+    transition:
+        color var(--transition-fast),
+        transform var(--transition-fast);
+}
+
+.btn-cancelar:hover,
+#btn-cancelar:hover {
+    color:
+        var(--brand);
+
+    transform:
+        translateX(-2px);
+}
+
+
+/* =========================================================
+   16. NÃO DUPLICAR O TÍTULO
+========================================================= */
+
+.modo-cadastro-banner {
+    display: none !important;
+}
+
+
+/* =========================================================
+   17. FORMULÁRIO
+========================================================= */
+
+.produto-form,
+.bloco-cadastro-individual,
+.area-cadastro-lote {
+    display: grid;
+
+    gap: 18px;
+}
+
+.form-card {
+    padding:
+        clamp(
+            20px,
+            3.5vw,
+            30px
+        );
+
+    border:
+        1px solid
+        var(--line);
+
+    border-radius:
+        var(--radius-md);
+
+    background:
+        var(--surface);
+}
+
+.form-card-header {
+    margin-bottom: 22px;
+
+    padding-bottom: 16px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 11px;
+
+    border-bottom:
+        1px solid
+        var(--line);
+}
+
+.form-card h2 {
+    margin: 0;
+
+    font-size: 1.35rem;
+}
+
+
+/* =========================================================
+   18. CAMPOS
+========================================================= */
+
+.campo {
+    display: grid;
+
+    gap: 7px;
+}
+
+.campo + .campo {
+    margin-top: 18px;
+}
+
+.campo label,
+.lote-campo > label,
+.lote-campo-massa label,
+.lote-produto-campo label {
+    color:
+        var(--text);
+
+    font-size: .84rem;
+
+    font-weight: 700;
+}
+
+.campos-grid {
+    margin-top: 18px;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            2,
+            minmax(0, 1fr)
+        );
+
+    gap: 18px;
+}
+
+.campos-grid .campo + .campo {
+    margin-top: 0;
+}
+
+
+/* =========================================================
+   19. INPUTS
+========================================================= */
+
+input:not([type="file"]),
+select,
+textarea {
+    width: 100%;
+
+    min-height: 46px;
+
+    padding:
+        11px
+        12px;
+
+    border:
+        1px solid
+        var(--line-strong);
+
+    border-radius:
+        var(--radius-sm);
+
+    outline: none;
+
+    background:
+        #fff;
+
+    color:
+        var(--text);
+
+    font-size: .94rem;
+
+    line-height: 1.4;
+
+    transition:
+        border-color var(--transition-fast),
+        box-shadow var(--transition-fast),
+        background-color var(--transition-fast);
+}
+
+textarea {
+    min-height: 104px;
+
+    resize: vertical;
+}
+
+input:not([type="file"])::placeholder,
+textarea::placeholder {
+    color:
+        var(--text-soft);
+
+    opacity: 1;
+}
+
+input:not([type="file"]):hover,
+select:hover,
+textarea:hover {
+    border-color:
+        #bcae9f;
+}
+
+input:not([type="file"]):focus,
+select:focus,
+textarea:focus {
+    border-color:
+        var(--accent);
+
+    background:
+        #fffdfb;
+
+    box-shadow:
+        0
+        0
+        0
+        3px
+        var(--focus);
+}
+
+
+/* =========================================================
+   20. PREÇO
+========================================================= */
+
+.campo-preco {
+    display: flex;
+}
+
+.campo-preco > span {
+    min-height: 46px;
+
+    padding:
+        0
+        12px;
+
+    display: inline-flex;
+
+    align-items: center;
+
+    border:
+        1px solid
+        var(--line-strong);
+
+    border-right: 0;
+
+    border-radius:
+        var(--radius-sm)
+        0
+        0
+        var(--radius-sm);
+
+    background:
+        var(--surface-muted);
+
+    color:
+        var(--text-muted);
+
+    font-size: .9rem;
+
+    font-weight: 700;
+}
+
+.campo-preco input {
+    min-width: 0;
+
+    border-radius:
+        0
+        var(--radius-sm)
+        var(--radius-sm)
+        0;
+}
+
+
+/* =========================================================
+   21. UPLOAD
+========================================================= */
+
+#imagem,
+#lote-imagens {
+    position: absolute;
+
+    width: 1px;
+    height: 1px;
+
+    opacity: 0;
+
+    pointer-events: none;
+}
+
+.upload-area,
+.lote-upload {
+    min-height: 154px;
+
+    padding: 24px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 5px;
+
+    border:
+        1.5px dashed
+        #c8b79d;
+
+    border-radius:
+        var(--radius-md);
+
+    background:
+        #fffcf8;
+
+    color:
+        var(--text);
+
+    text-align: center;
+
+    cursor: pointer;
+
+    transition:
+        border-color var(--transition-fast),
+        background-color var(--transition-fast),
+        transform var(--transition-fast),
+        box-shadow var(--transition-fast);
+}
+
+.upload-area:hover,
+.lote-upload:hover {
+    border-color:
+        var(--accent);
+
+    background:
+        #fff8ec;
+
+    transform:
+        translateY(-1px);
+
+    box-shadow:
+        var(--shadow-sm);
+}
+
+.upload-area-titulo,
+.lote-upload-titulo {
+    color:
+        var(--brand);
+
+    font-size: 1rem;
+
+    font-weight: 750;
+}
+
+.upload-area-texto,
+.lote-upload-texto {
+    color:
+        var(--text-muted);
+
+    font-size: .86rem;
+}
+
+.upload-area-formatos,
+.lote-upload-formatos {
+    color:
+        var(--text-soft);
+
+    font-size: .72rem;
+}
+
+
+/* =========================================================
+   22. PREVIEW
+========================================================= */
+
+.preview-container {
+    min-height: 64px;
+
+    margin-top: 12px;
+
+    padding: 12px;
+
+    display: grid;
+
+    place-items: center;
+
+    overflow: hidden;
+
+    border:
+        1px solid
+        var(--line);
+
+    border-radius:
+        var(--radius-sm);
+
+    background:
+        var(--surface-subtle);
+}
+
+.preview-container p {
+    margin: 0;
+
+    color:
+        var(--text-soft);
+
+    font-size: .84rem;
 }
 
 .preview-container img {
-    display: block;
+    width:
+        min(
+            100%,
+            360px
+        );
 
-    width: 100%;
-    max-height: 300px;
+    max-height: 320px;
+
+    border-radius: 6px;
 
     object-fit: contain;
 }
 
-.preview-container p {
+
+/* =========================================================
+   23. AÇÕES DO FORMULÁRIO
+========================================================= */
+
+.form-acoes {
     padding: 20px;
+
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 1fr)
+        auto;
+
+    align-items: center;
+
+    gap:
+        16px
+        24px;
+
+    border:
+        1px solid
+        var(--line);
+
+    border-radius:
+        var(--radius-md);
+
+    background:
+        var(--surface-subtle);
+}
+
+.form-acoes-texto {
+    display: grid;
+
+    gap: 2px;
+}
+
+.form-acoes-texto strong {
+    color:
+        var(--brand);
+
+    font-size: .94rem;
+}
+
+.form-acoes-texto span {
+    color:
+        var(--text-muted);
+
+    font-size: .84rem;
+}
+
+.btn-salvar,
+#btn-cadastrar-lote {
+    min-height: 46px;
+
+    padding:
+        0
+        18px;
+
+    border:
+        1px solid
+        var(--brand);
+
+    border-radius:
+        var(--radius-sm);
+
+    background:
+        var(--brand);
+
+    color:
+        #fff;
+
+    font-size: .9rem;
+
+    font-weight: 750;
+
+    transition:
+        background-color var(--transition-fast),
+        border-color var(--transition-fast),
+        transform var(--transition-fast),
+        box-shadow var(--transition-fast);
+}
+
+.btn-salvar:hover:not(:disabled),
+#btn-cadastrar-lote:hover:not(:disabled) {
+    border-color:
+        var(--brand-hover);
+
+    background:
+        var(--brand-hover);
+
+    transform:
+        translateY(-1px);
+
+    box-shadow:
+        0
+        7px
+        16px
+        rgba(53, 32, 27, .12);
+}
+
+#mensagem,
+#lote-status {
+    grid-column: 1 / -1;
+
+    min-height: 1.4em;
+
+    margin:
+        -5px
+        0
+        0;
+
+    color:
+        var(--text-muted);
+
+    font-size: .84rem;
+}
+
+
+/* =========================================================
+   24. PRODUTOS CADASTRADOS
+========================================================= */
+
+.produtos-section {
+    background:
+        var(--surface);
+}
+
+.produtos-toggle {
+    padding:
+        22px
+        clamp(
+            22px,
+            3.5vw,
+            34px
+        );
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 18px;
+
+    list-style: none;
+
+    cursor: pointer;
+}
+
+.produtos-toggle::-webkit-details-marker {
+    display: none;
+}
+
+.produtos-toggle-texto h2 {
+    margin: 0;
+
+    font-size: 1.45rem;
+}
+
+.produtos-toggle-texto p {
+    margin:
+        4px
+        0
+        0;
+
+    color:
+        var(--text-muted);
+
+    font-size: .88rem;
+}
+
+.produtos-toggle-indicador {
+    width: 32px;
+    height: 32px;
+
+    flex: 0 0 auto;
+
+    display: inline-grid;
+
+    place-items: center;
+
+    border:
+        1px solid
+        var(--line-strong);
+
+    border-radius: 50%;
+
+    color:
+        var(--brand);
+
+    font-size: 1.25rem;
+
+    transition:
+        transform var(--transition),
+        background-color var(--transition-fast),
+        border-color var(--transition-fast);
+}
+
+.produtos-section[open] .produtos-toggle {
+    border-bottom:
+        1px solid
+        var(--line);
+}
+
+.produtos-section[open] .produtos-toggle-indicador {
+    border-color:
+        var(--accent);
+
+    background:
+        var(--accent-soft);
+
+    transform:
+        rotate(90deg);
+}
+
+.produtos-toggle-menos {
+    display: none;
+}
+
+.produtos-section[open] .produtos-toggle-mais {
+    display: none;
+}
+
+.produtos-section[open] .produtos-toggle-menos {
+    display: inline;
+}
+
+
+/* =========================================================
+   25. LISTA DE PRODUTOS
+========================================================= */
+
+#lista-produtos {
+    padding:
+        16px
+        clamp(
+            18px,
+            3.5vw,
+            32px
+        )
+        clamp(
+            20px,
+            3.5vw,
+            32px
+        );
+
+    display: grid;
+
+    gap: 12px;
+}
+
+#lista-produtos > p,
+.lista-carregando {
+    min-height: 100px;
+
+    margin: 0;
+
+    display: grid;
+
+    place-items: center;
+
+    border:
+        1px dashed
+        var(--line-strong);
+
+    border-radius:
+        var(--radius-md);
+
+    color:
+        var(--text-muted);
+
+    font-size: .9rem;
+
+    text-align: center;
+}
+
+
+/* =========================================================
+   26. CARD DO PRODUTO ADMIN
+========================================================= */
+
+.produto-admin {
+    padding: 14px;
+
+    display: grid;
+
+    grid-template-columns:
+        110px
+        minmax(0, 1fr);
+
+    gap: 18px;
+
+    border:
+        1px solid
+        var(--line);
+
+    border-radius:
+        var(--radius-md);
+
+    background:
+        #fff;
+
+    transition:
+        border-color var(--transition-fast),
+        box-shadow var(--transition-fast),
+        transform var(--transition-fast);
+}
+
+.produto-admin:hover {
+    border-color:
+        #d3c2b2;
+
+    box-shadow:
+        var(--shadow-sm);
+
+    transform:
+        translateY(-1px);
+}
+
+.produto-admin > img {
+    width: 110px;
+    height: 110px;
+
+    border:
+        1px solid
+        var(--line);
+
+    border-radius:
+        var(--radius-sm);
+
+    background:
+        var(--surface-muted);
+
+    object-fit: cover;
+}
+
+.produto-admin-info {
+    min-width: 0;
+}
+
+.produto-admin-info h3 {
+    margin:
+        1px
+        0
+        4px;
+
+    overflow-wrap: anywhere;
+
+    color:
+        var(--brand);
+
+    font-size: 1.05rem;
+
+    line-height: 1.25;
+}
+
+.produto-admin-info p {
+    margin:
+        5px
+        0
+        0;
+
+    color:
+        var(--text-muted);
+
+    font-size: .84rem;
+
+    line-height: 1.45;
+}
+
+.produto-admin-info > strong {
+    display: block;
+
+    margin-top: 8px;
+
+    color:
+        var(--brand);
+
+    font-size: .96rem;
+}
+
+.produto-admin-info p:last-of-type strong {
+    display: inline-flex;
+
+    align-items: center;
+
+    padding:
+        3px
+        7px;
+
+    border-radius:
+        999px;
+
+    background:
+        var(--success-bg);
+
+    color:
+        var(--success);
+
+    font-size: .76rem;
+
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   27. AÇÕES DO PRODUTO
+========================================================= */
+
+.acoes-produto {
+    margin-top: 14px;
+
+    padding-top: 13px;
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 8px;
+
+    border-top:
+        1px solid
+        var(--line);
+}
+
+.acoes-produto button {
+    min-height: 36px;
+
+    padding:
+        0
+        11px;
+
+    border:
+        1px solid
+        var(--line-strong);
+
+    border-radius: 7px;
+
+    background:
+        #fff;
+
+    color:
+        var(--text);
+
+    font-size: .8rem;
+
+    font-weight: 700;
+
+    transition:
+        background-color var(--transition-fast),
+        border-color var(--transition-fast),
+        color var(--transition-fast),
+        transform var(--transition-fast);
+}
+
+.acoes-produto button:hover {
+    transform:
+        translateY(-1px);
+}
+
+.acoes-produto .btn-editar:hover {
+    border-color:
+        var(--accent);
+
+    background:
+        var(--accent-soft);
+}
+
+.acoes-produto .btn-status:hover {
+    border-color:
+        #82a38d;
+
+    background:
+        var(--success-bg);
+
+    color:
+        var(--success);
+}
+
+.acoes-produto .btn-excluir {
+    color:
+        var(--danger);
+}
+
+.acoes-produto .btn-excluir:hover {
+    border-color:
+        var(--danger);
+
+    background:
+        var(--danger-bg);
+}
+
+
+/* =========================================================
+   28. CADASTRO EM LOTE
+========================================================= */
+
+.admin-container #cadastro-lote {
+    width: 100%;
+
+    padding:
+        clamp(
+            22px,
+            3.5vw,
+            32px
+        );
+
+    border:
+        1px solid
+        var(--line);
+
+    border-radius:
+        var(--radius-lg);
+
+    background:
+        #fff;
+}
+
+.admin-container .cadastro-lote-topo {
+    margin-bottom: 26px;
+
+    padding-bottom: 20px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 20px;
+
+    border-bottom:
+        1px solid
+        var(--line);
+}
+
+.admin-container .lote-kicker {
+    margin:
+        0
+        0
+        5px;
+
+    color:
+        var(--accent);
+
+    font-size: .66rem;
+
+    font-weight: 800;
+
+    letter-spacing: .16em;
+
+    text-transform: uppercase;
+}
+
+.admin-container .cadastro-lote-topo h2 {
+    margin: 0;
+
+    color:
+        var(--brand);
+
+    font-family:
+        var(--font-serif);
+
+    font-size: 1.6rem;
+
+    font-weight: 400;
+}
+
+.admin-container .cadastro-lote-topo p {
+    max-width: 540px;
+
+    margin:
+        6px
+        0
+        0;
+
+    color:
+        var(--text-muted);
+
+    font-size: .88rem;
+}
+
+
+/* =========================================================
+   29. CONTADOR
+========================================================= */
+
+.admin-container #lote-contador {
+    min-width: 145px;
+
+    flex: 0 0 auto;
+
+    padding:
+        14px
+        18px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border:
+        1px solid
+        #d6c4ad;
+
+    border-radius:
+        14px;
+
+    background:
+        linear-gradient(
+            180deg,
+            #fffdf9 0%,
+            #f8f1e8 100%
+        );
+
+    color:
+        var(--brand);
+
+    font-family:
+        var(--font-serif);
+
+    font-size: 1.45rem;
+
+    font-weight: 500;
+
+    line-height: 1;
+
+    white-space: nowrap;
+
+    box-shadow:
+        0
+        5px
+        14px
+        rgba(53, 37, 29, .05);
+}
+
+
+/* =========================================================
+   30. CATEGORIA PADRÃO
+========================================================= */
+
+.admin-container .lote-campo {
+    margin-bottom: 22px;
+
+    display: grid;
+
+    gap: 7px;
+}
+
+.admin-container .lote-campo > label {
+    color:
+        var(--text);
+
+    font-size: .84rem;
+
+    font-weight: 700;
+}
+
+.admin-container .lote-categoria-padrao-controle {
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 1fr)
+        auto;
+
+    gap: 8px;
+}
+
+.admin-container .lote-categoria-padrao-controle button {
+    min-height: 46px;
+
+    padding:
+        0
+        16px;
+
+    border:
+        1px solid
+        var(--line-strong);
+
+    border-radius:
+        var(--radius-sm);
+
+    background:
+        #fff;
+
+    color:
+        var(--brand);
+
+    font-size: .8rem;
+
+    font-weight: 750;
+
+    white-space: nowrap;
+
+    transition:
+        border-color var(--transition-fast),
+        background-color var(--transition-fast),
+        transform var(--transition-fast);
+}
+
+.admin-container .lote-categoria-padrao-controle button:hover {
+    border-color:
+        var(--accent);
+
+    background:
+        var(--accent-soft);
+
+    transform:
+        translateY(-1px);
+}
+
+.admin-container .lote-campo small,
+.admin-container .lote-explicacao {
+    margin: 0;
+
+    color:
+        var(--text-muted);
+
+    font-size: .8rem;
+}
+
+
+/* =========================================================
+   31. UPLOAD DO LOTE
+========================================================= */
+
+.admin-container .lote-upload {
+    min-height: 160px;
+
+    padding: 28px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 7px;
+
+    border:
+        1.5px dashed
+        #c8b79d;
+
+    border-radius:
+        var(--radius-md);
+
+    background:
+        #fffcf8;
+
+    text-align: center;
+
+    cursor: pointer;
+
+    transition:
+        border-color var(--transition-fast),
+        background-color var(--transition-fast),
+        transform var(--transition-fast),
+        box-shadow var(--transition-fast);
+}
+
+.admin-container .lote-upload:hover {
+    border-color:
+        var(--accent);
+
+    background:
+        #fff8ec;
+
+    transform:
+        translateY(-1px);
+
+    box-shadow:
+        var(--shadow-sm);
+}
+
+.admin-container .lote-upload-titulo {
+    color:
+        var(--brand);
+
+    font-family:
+        var(--font-serif);
+
+    font-size:
+        1.25rem;
+
+    font-weight: 500;
+}
+
+.admin-container .lote-upload-texto {
+    color:
+        var(--text-muted);
+
+    font-size: .84rem;
+}
+
+.admin-container .lote-upload-formatos {
+    color:
+        var(--text-soft);
+
+    font-size: .72rem;
+}
+
+
+/* =========================================================
+   32. APLICAR VALORES A TODOS
+========================================================= */
+
+.admin-container .lote-aplicar-todos {
+    margin:
+        24px
+        0;
+
+    padding:
+        17px;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            3,
+            minmax(0, 1fr)
+        );
+
+    gap: 14px;
+
+    border:
+        1px solid
+        #ded2c7;
+
+    border-radius:
+        var(--radius-md);
+
+    background:
+        #faf7f2;
+
+    box-shadow:
+        inset
+        0
+        1px
+        0
+        rgba(255,255,255,.7);
+}
+
+.admin-container .lote-campo-massa {
+    min-width: 0;
+
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 1fr)
+        auto;
+
+    align-items: end;
+
+    gap:
+        7px
+        8px;
+}
+
+.admin-container .lote-campo-massa label {
+    grid-column:
+        1 / -1;
+
+    color:
+        var(--text);
+
+    font-size: .8rem;
+
+    font-weight: 700;
+}
+
+.admin-container .lote-campo-massa textarea {
+    min-height: 46px;
+}
+
+.admin-container .lote-campo-massa button {
+    min-height: 46px;
+
+    padding:
+        0
+        10px;
+
+    border:
+        1px solid
+        var(--line-strong);
+
+    border-radius:
+        var(--radius-sm);
+
+    background:
+        #fff;
+
+    color:
+        var(--brand);
+
+    font-size: .76rem;
+
+    font-weight: 750;
+
+    white-space: nowrap;
+
+    transition:
+        border-color var(--transition-fast),
+        background-color var(--transition-fast),
+        transform var(--transition-fast);
+}
+
+.admin-container .lote-campo-massa button:hover {
+    border-color:
+        var(--accent);
+
+    background:
+        var(--accent-soft);
+
+    transform:
+        translateY(-1px);
+}
+
+
+/* =========================================================
+   33. ÁREA DOS PRODUTOS SELECIONADOS
+========================================================= */
+
+.admin-container #lote-produtos {
+    position: relative;
+
+    margin-top: 24px;
+
+    padding:
+        46px
+        16px
+        16px;
+
+    display: grid;
+
+    gap: 12px;
+
+    border:
+        1px solid
+        #dfd2c7;
+
+    border-radius:
+        var(--radius-lg);
+
+    background:
+        #f8f5f1;
+
+    box-shadow:
+        inset
+        0
+        1px
+        0
+        rgba(255,255,255,.75);
+}
+
+.admin-container #lote-produtos::before {
+    content:
+        "PRODUTOS SELECIONADOS";
+
+    position: absolute;
+
+    top: 16px;
+    left: 18px;
+
+    color:
+        var(--accent);
+
+    font-size: .68rem;
+
+    font-weight: 800;
+
+    letter-spacing: .18em;
+
+    text-transform: uppercase;
+}
+
+.admin-container #lote-produtos::after {
+    content: "";
+
+    position: absolute;
+
+    top: 31px;
+
+    left: 18px;
+    right: 18px;
+
+    height: 1px;
+
+    background:
+        #dfd2c7;
+}
+
+.admin-container #lote-produtos:empty {
+    min-height: 130px;
+
+    align-items: center;
+    justify-content: center;
+}
+
+.admin-container #lote-produtos:empty::after {
+    display: none;
+}
+
+
+/* =========================================================
+   34. ITEM INDIVIDUAL DENTRO DO LOTE
+========================================================= */
+
+.admin-container .lote-produto-item {
+    padding: 14px;
+
+    display: grid;
+
+    grid-template-columns:
+        110px
+        minmax(0, 1fr);
+
+    gap: 16px;
+
+    border:
+        1px solid
+        #ddd1c6;
+
+    border-radius:
+        var(--radius-md);
+
+    background:
+        #fff;
+
+    box-shadow:
+        0
+        2px
+        8px
+        rgba(53, 37, 29, .035);
+
+    transition:
+        border-color var(--transition-fast),
+        box-shadow var(--transition-fast),
+        transform var(--transition-fast);
+}
+
+.admin-container .lote-produto-item:hover {
+    border-color:
+        #cdbba9;
+
+    box-shadow:
+        0
+        7px
+        20px
+        rgba(53, 37, 29, .065);
+
+    transform:
+        translateY(-1px);
+}
+
+
+/* =========================================================
+   35. IMAGEM DO PRODUTO + BOTÃO REMOVER
+========================================================= */
+
+.lote-produto-imagem {
+    position: relative;
+
+    width: 110px;
+    min-width: 110px;
+
+    align-self: start;
+}
+
+.lote-produto-imagem > img {
+    width: 110px;
+    height: 110px;
+
+    border:
+        1px solid
+        var(--line);
+
+    border-radius:
+        var(--radius-sm);
+
+    background:
+        var(--surface-muted);
+
+    object-fit: cover;
+
+    transition:
+        filter var(--transition-fast),
+        transform var(--transition-fast);
+}
+
+.lote-produto-item:hover
+.lote-produto-imagem > img {
+    filter:
+        brightness(.96);
+}
+
+
+/* ---------------------------------------------------------
+   BOTÃO REMOVER
+--------------------------------------------------------- */
+
+.btn-remover-lote {
+    position: absolute;
+
+    left: 50%;
+    bottom: 8px;
+
+    min-height: 30px;
+
+    padding:
+        0
+        12px;
+
+    transform:
+        translateX(-50%);
+
+    border:
+        1px solid
+        rgba(163, 63, 57, .28);
+
+    border-radius:
+        999px;
+
+    background:
+        rgba(255, 255, 255, .96);
+
+    color:
+        var(--danger);
+
+    font-size: .68rem;
+
+    font-weight: 800;
+
+    line-height: 1;
+
+    white-space: nowrap;
+
+    box-shadow:
+        0
+        4px
+        10px
+        rgba(43, 30, 25, .12);
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    transition:
+        opacity var(--transition-fast),
+        visibility var(--transition-fast),
+        background-color var(--transition-fast),
+        border-color var(--transition-fast),
+        color var(--transition-fast),
+        transform var(--transition-fast);
+}
+
+
+/* Mostrar ao passar o mouse */
+.lote-produto-item:hover
+.btn-remover-lote,
+
+.btn-remover-lote:focus-visible {
+    opacity: 1;
+
+    visibility: visible;
+}
+
+
+/* Hover */
+.btn-remover-lote:hover {
+    border-color:
+        var(--danger);
+
+    background:
+        var(--danger);
+
+    color:
+        #fff;
+
+    transform:
+        translateX(-50%)
+        translateY(-1px);
+}
+
+
+/* Clique */
+.btn-remover-lote:active {
+    transform:
+        translateX(-50%)
+        translateY(0);
+}
+
+
+/* =========================================================
+   36. CAMPOS DE CADA PRODUTO
+========================================================= */
+
+.admin-container .lote-produto-campos {
+    min-width: 0;
+
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 1fr)
+        140px
+        minmax(160px, .8fr);
+
+    gap: 10px;
+}
+
+.admin-container .lote-produto-campo {
+    min-width: 0;
+
+    display: grid;
+
+    gap: 5px;
+}
+
+.admin-container .lote-produto-campo-full {
+    grid-column:
+        1 / -1;
+}
+
+.admin-container .lote-produto-campo label {
+    color:
+        var(--text-muted);
+
+    font-size: .72rem;
+
+    font-weight: 800;
+
+    letter-spacing: .02em;
+}
+
+.admin-container .lote-produto-campo input,
+.admin-container .lote-produto-campo select,
+.admin-container .lote-produto-campo textarea {
+    background:
+        #fff;
+}
+
+.admin-container .lote-produto-campo textarea {
+    min-height: 64px;
+}
+
+
+/* =========================================================
+   37. AÇÕES DO LOTE
+========================================================= */
+
+.admin-container .lote-acoes {
+    margin-top: 24px;
+
+    padding-top: 20px;
+
+    border-top:
+        1px solid
+        var(--line);
+
+    text-align: center;
+}
+
+.admin-container #btn-cadastrar-lote {
+    width: 100%;
+
+    min-height: 52px;
+
+    font-size: .95rem;
+
+    border-radius:
+        var(--radius-md);
+}
+
+.admin-container #lote-status {
+    margin:
+        10px
+        0
+        0;
+
+    color:
+        var(--text-muted);
+
+    font-size: .84rem;
+}
+
+
+/* =========================================================
+   38. VALIDAÇÃO
+========================================================= */
+
+.admin-container
+input:invalid:not(:placeholder-shown),
+.admin-container
+select:invalid {
+    border-color:
+        #be5a54;
+}
+
+.admin-container
+input:invalid:not(:placeholder-shown):focus,
+.admin-container
+select:invalid:focus {
+    box-shadow:
+        0
+        0
+        0
+        3px
+        rgba(190, 90, 84, .16);
+}
+
+
+/* =========================================================
+   39. ANIMAÇÕES
+========================================================= */
+
+@keyframes surgir-suave {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(8px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0);
+    }
+}
+
+@keyframes aparecer {
+
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.form-section,
+.produtos-section {
+    animation:
+        surgir-suave
+        .35s
+        ease-out
+        both;
+}
+
+.area-cadastro:not([hidden]),
+.selecao-tipo-cadastro:not([hidden]) {
+    animation:
+        surgir-suave
+        .25s
+        ease-out
+        both;
+}
+
+.indicador-modo-cadastro {
+    animation:
+        surgir-suave
+        .28s
+        ease-out
+        both;
+}
+
+.form-card,
+.admin-container #cadastro-lote,
+.produto-admin,
+.admin-container .lote-produto-item,
+.categoria-admin-item {
+    animation:
+        surgir-suave
+        .28s
+        ease-out
+        both;
+}
+
+.admin-container #lote-produtos {
+    animation:
+        surgir-suave
+        .30s
+        ease-out
+        both;
+}
+
+.produtos-section[open] #lista-produtos {
+    animation:
+        aparecer
+        .20s
+        ease-out
+        both;
+}
+
+.preview-container img {
+    animation:
+        aparecer
+        .20s
+        ease-out
+        both;
+}
+
+
+/* =========================================================
+   40. REDUÇÃO DE MOVIMENTO
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: .01ms !important;
+
+        animation-iteration-count:
+            1 !important;
+
+        transition-duration:
+            .01ms !important;
+    }
+}
+
+
+/* =========================================================
+   41. TABLET
+========================================================= */
+
+@media (max-width: 760px) {
+
+    .admin-header {
+        min-height: 70px;
+
+        padding:
+            0
+            20px;
+    }
+
+    .admin-container {
+        width:
+            min(
+                calc(100% - 28px),
+                1120px
+            );
+
+        padding:
+            24px
+            0
+            40px;
+
+        gap: 16px;
+    }
+
+    .form-section {
+        padding: 22px;
+    }
+
+    .form-header {
+        margin-bottom: 24px;
+
+        padding-bottom: 18px;
+    }
+
+    .opcoes-cadastro,
+    .campos-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .opcao-cadastro {
+        min-height: 120px;
+    }
+
+    .form-acoes {
+        grid-template-columns: 1fr;
+    }
+
+    .btn-salvar {
+        width: 100%;
+    }
+
+    .admin-container .lote-aplicar-todos {
+        grid-template-columns: 1fr;
+    }
+
+    .admin-container .lote-produto-campos {
+        grid-template-columns:
+            minmax(0, 1fr)
+            135px;
+    }
+
+    .admin-container
+    .lote-produto-campo-categoria {
+        grid-column:
+            1 / -1;
+    }
+
+    .indicador-modo-cadastro {
+        padding:
+            28px
+            20px
+            30px;
+    }
+
+    .indicador-modo-cadastro-texto strong {
+        font-size:
+            clamp(
+                2.2rem,
+                8vw,
+                3.4rem
+            );
+    }
+
+    .admin-container .cadastro-lote-topo {
+        align-items: flex-start;
+    }
+
+    .admin-container #lote-contador {
+        min-width: 125px;
+    }
+
+    .admin-container .lote-produto-item {
+        grid-template-columns:
+            90px
+            minmax(0, 1fr);
+    }
+
+    .lote-produto-imagem {
+        width: 90px;
+        min-width: 90px;
+    }
+
+    .lote-produto-imagem > img {
+        width: 90px;
+        height: 90px;
+    }
+
+    .admin-container #lote-produtos {
+        padding-top: 44px;
+    }
+}
+
+
+/* =========================================================
+   42. MOBILE
+========================================================= */
+
+@media (max-width: 540px) {
+
+    .admin-header {
+        padding:
+            14px
+            16px;
+
+        flex-wrap: wrap;
+
+        gap:
+            10px
+            16px;
+    }
+
+    .admin-header-brand {
+        width: 100%;
+    }
+
+    .admin-menu {
+        width: 100%;
+    }
+
+    .admin-menu-link,
+    .admin-menu-button {
+        flex: 1;
+    }
+
+    .admin-brand-subtitle {
+        font-size: .6rem;
+    }
+
+    .form-section {
+        padding: 18px;
+
+        border-radius: 14px;
+    }
+
+    #gerenciador-categorias,
+    .form-card,
+    .admin-container #cadastro-lote {
+        padding: 16px;
+    }
+
+    #categorias-admin-form {
+        flex-direction: column;
+    }
+
+    #categorias-admin-form button {
+        width: 100%;
+    }
+
+    .opcao-cadastro {
+        padding: 18px;
+
+        grid-template-columns:
+            auto
+            minmax(0, 1fr)
+            auto;
+
+        gap: 10px;
+    }
+
+    .opcao-cadastro-indicador {
+        display: none;
+    }
+
+
+    /* =========================================
+       TÍTULO PRINCIPAL
+    ========================================= */
+
+    .indicador-modo-cadastro {
+        padding:
+            28px
+            16px
+            30px;
+
+        gap: 12px;
+    }
+
+    .indicador-modo-cadastro-label {
+        font-size: .62rem;
+
+        letter-spacing:
+            .18em;
+    }
+
+    .indicador-modo-cadastro-texto strong {
+        font-size:
+            clamp(
+                2.1rem,
+                11vw,
+                3rem
+            );
+    }
+
+    .indicador-modo-cadastro-tipo {
+        min-width: 100px;
+
+        font-size: .6rem;
+    }
+
+
+    /* =========================================
+       VOLTAR
+    ========================================= */
+
+    .btn-voltar-cadastro {
+        width: 100%;
+
+        min-height: 44px;
+
+        margin:
+            0
+            auto;
+
+        border-radius:
+            10px;
+
+        background:
+            #fff;
+
+        box-shadow:
+            0
+            3px
+            12px
+            rgba(53, 37, 29, .05);
+    }
+
+
+    /* =========================================
+       CABEÇALHO DO LOTE
+    ========================================= */
+
+    .admin-container .cadastro-lote-topo {
+        flex-direction: column;
+
+        align-items: stretch;
+    }
+
+    .admin-container .cadastro-lote-topo h2 {
+        font-size: 1.4rem;
+    }
+
+    .admin-container #lote-contador {
+        width: 100%;
+
+        min-width: 0;
+
+        padding: 14px;
+
+        font-size: 1.35rem;
+
+        text-align: center;
+    }
+
+
+    /* =========================================
+       ÁREA DOS PRODUTOS
+    ========================================= */
+
+    .admin-container #lote-produtos {
+        margin-top: 20px;
+
+        padding:
+            44px
+            10px
+            10px;
+
+        border-radius:
+            14px;
+    }
+
+    .admin-container #lote-produtos::before {
+        left: 14px;
+
+        font-size: .62rem;
+    }
+
+    .admin-container #lote-produtos::after {
+        left: 14px;
+
+        right: 14px;
+    }
+
+
+    /* =========================================
+       CARD DO PRODUTO
+    ========================================= */
+
+    .admin-container .lote-produto-item {
+        grid-template-columns: 1fr;
+
+        padding: 10px;
+
+        gap: 12px;
+    }
+
+    .lote-produto-imagem {
+        width: 100%;
+
+        min-width: 0;
+    }
+
+    .lote-produto-imagem > img {
+        width: 100%;
+
+        height: 190px;
+    }
+
+    .admin-container .lote-produto-campos {
+        grid-template-columns: 1fr;
+
+        gap: 10px;
+    }
+
+    .admin-container .lote-produto-campo-full {
+        grid-column: auto;
+    }
+
+
+    /* =========================================
+       BOTÃO REMOVER NO MOBILE
+    ========================================= */
+
+    .btn-remover-lote {
+        opacity: 1;
+
+        visibility: visible;
+
+        min-height: 34px;
+
+        bottom: 10px;
+
+        padding:
+            0
+            14px;
+
+        font-size: .7rem;
+    }
+
+
+    /* =========================================
+       APLICAÇÃO EM MASSA
+    ========================================= */
+
+    .admin-container .lote-aplicar-todos {
+        grid-template-columns: 1fr;
+
+        padding: 13px;
+
+        gap: 12px;
+    }
+
+
+    /* =========================================
+       CATEGORIA
+    ========================================= */
+
+    .admin-container
+    #cadastro-lote
+    .lote-categoria-padrao-controle {
+        grid-template-columns: 1fr;
+    }
+
+    .admin-container
+    #cadastro-lote
+    .lote-categoria-padrao-controle
+    button {
+        width: 100%;
+    }
+
+    .admin-container .lote-campo-massa {
+        grid-template-columns: 1fr;
+    }
+
+    .admin-container
+    .lote-campo-massa
+    button {
+        width: 100%;
+    }
+
+
+    /* =========================================
+       PRODUTOS CADASTRADOS
+    ========================================= */
+
+    .produtos-toggle {
+        padding: 18px;
+    }
+
+
+    /* =========================================
+       PRODUTO ADMINISTRATIVO
+    ========================================= */
+
+    .produto-admin {
+        grid-template-columns: 1fr;
+    }
+
+    .produto-admin > img {
+        width: 100%;
+        height: 210px;
+    }
 }

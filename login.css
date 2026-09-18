@@ -1,0 +1,379 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=DM+Sans:wght@400;500;600&display=swap');
+
+/* ==========================================
+   VARIÁVEIS
+========================================== */
+
+:root {
+    --cream: #f7f1e6;
+    --cream-2: #efe5d4;
+    --white: #fffaf3;
+
+    --green: #0d403a;
+    --green-deep: #082d29;
+
+    --gold: #aa7b35;
+    --gold-soft: #d6b77a;
+
+    --text: #183330;
+    --muted: #746c61;
+
+    --dark: #10130f;
+
+    --line: rgba(24, 51, 48, .16);
+
+    --serif: 'Cormorant Garamond', Georgia, serif;
+    --sans: 'DM Sans', Arial, sans-serif;
+}
+
+
+/* ==========================================
+   RESET
+========================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    min-height: 100%;
+}
+
+body {
+    font-family: var(--sans);
+    background: var(--cream);
+    color: var(--text);
+}
+
+
+/* ==========================================
+   FUNDO DA TELA
+========================================== */
+
+.login-container {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+
+    position: relative;
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 15% 20%,
+            rgba(170, 123, 53, .08),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 85% 80%,
+            rgba(13, 64, 58, .08),
+            transparent 32%
+        ),
+        var(--cream);
+}
+
+
+/* ==========================================
+   DETALHES DECORATIVOS
+========================================== */
+
+.login-container::before {
+    content: "";
+    position: absolute;
+
+    width: 380px;
+    height: 380px;
+
+    border: 1px solid rgba(170, 123, 53, .12);
+    border-radius: 50%;
+
+    top: -180px;
+    right: -130px;
+}
+
+.login-container::after {
+    content: "";
+    position: absolute;
+
+    width: 300px;
+    height: 300px;
+
+    border: 1px solid rgba(13, 64, 58, .10);
+    border-radius: 50%;
+
+    bottom: -150px;
+    left: -120px;
+}
+
+
+/* ==========================================
+   CAIXA DE LOGIN
+========================================== */
+
+.login-box {
+    width: min(430px, 100%);
+    position: relative;
+    z-index: 2;
+
+    padding: 48px 44px;
+
+    background: rgba(255, 250, 243, .88);
+
+    border: 1px solid rgba(24, 51, 48, .12);
+
+    box-shadow:
+        0 25px 70px rgba(43, 37, 27, .10),
+        0 4px 18px rgba(43, 37, 27, .04);
+
+    backdrop-filter: blur(10px);
+}
+
+
+/* ==========================================
+   DETALHE SUPERIOR
+========================================== */
+
+.login-box::before {
+    content: "";
+
+    display: block;
+
+    width: 42px;
+    height: 2px;
+
+    margin-bottom: 18px;
+
+    background: var(--gold);
+}
+
+
+/* ==========================================
+   TÍTULO
+========================================== */
+
+.login-box h1 {
+    color: var(--green);
+
+    font-family: var(--serif);
+
+    font-size: clamp(38px, 5vw, 48px);
+
+    line-height: .9;
+
+    font-weight: 500;
+
+    letter-spacing: -.025em;
+}
+
+
+/* ==========================================
+   DESCRIÇÃO
+========================================== */
+
+.login-box > p {
+    margin-top: 12px;
+    margin-bottom: 31px;
+
+    color: var(--muted);
+
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+
+/* ==========================================
+   FORMULÁRIO
+========================================== */
+
+#login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+
+/* ==========================================
+   CAMPOS
+========================================== */
+
+.campo {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.campo label {
+    color: var(--green);
+
+    font-size: 9px;
+    font-weight: 600;
+
+    letter-spacing: .18em;
+    text-transform: uppercase;
+}
+
+
+/* ==========================================
+   INPUTS
+========================================== */
+
+.campo input {
+    width: 100%;
+    height: 46px;
+
+    padding: 0 14px;
+
+    border: 1px solid rgba(24, 51, 48, .17);
+
+    background: rgba(247, 241, 230, .55);
+
+    color: var(--text);
+
+    font-family: var(--sans);
+    font-size: 12px;
+
+    outline: none;
+
+    border-radius: 0;
+
+    transition:
+        border-color .25s ease,
+        background-color .25s ease,
+        box-shadow .25s ease;
+}
+
+.campo input:hover {
+    border-color: rgba(170, 123, 53, .45);
+}
+
+.campo input:focus {
+    border-color: var(--gold);
+
+    background: var(--white);
+
+    box-shadow:
+        0 0 0 3px rgba(170, 123, 53, .08);
+}
+
+.campo input::placeholder {
+    color: #9a9285;
+}
+
+
+/* ==========================================
+   BOTÃO ENTRAR
+========================================== */
+
+.btn-salvar {
+    width: 100%;
+    min-height: 46px;
+
+    margin-top: 5px;
+
+    border: 1px solid var(--green);
+
+    background: var(--green);
+
+    color: #fffdf7;
+
+    font-family: var(--sans);
+    font-size: 11px;
+    font-weight: 600;
+
+    letter-spacing: .06em;
+
+    cursor: pointer;
+
+    transition:
+        transform .3s ease,
+        background-color .3s ease,
+        box-shadow .3s ease;
+}
+
+.btn-salvar:hover {
+    transform: translateY(-2px);
+
+    background: var(--green-deep);
+
+    box-shadow:
+        0 9px 22px rgba(8, 45, 41, .17);
+}
+
+.btn-salvar:active {
+    transform: translateY(0);
+}
+
+
+/* ==========================================
+   MENSAGEM DE LOGIN
+========================================== */
+
+#login-mensagem {
+    min-height: 16px;
+
+    margin-top: 2px;
+
+    color: #8a4437;
+
+    text-align: center;
+
+    font-size: 10px;
+    line-height: 1.4;
+}
+
+
+/* ==========================================
+   TABLET / TELAS MENORES
+========================================== */
+
+@media (max-width: 600px) {
+
+    .login-container {
+        padding: 20px;
+    }
+
+    .login-box {
+        padding: 38px 28px;
+    }
+
+    .login-box h1 {
+        font-size: 39px;
+    }
+}
+
+
+/* ==========================================
+   MOBILE
+========================================== */
+
+@media (max-width: 390px) {
+
+    .login-container {
+        padding: 14px;
+    }
+
+    .login-box {
+        padding: 32px 22px;
+    }
+
+    .login-box h1 {
+        font-size: 35px;
+    }
+
+    .login-box > p {
+        font-size: 11px;
+        margin-bottom: 25px;
+    }
+
+    .campo input,
+    .btn-salvar {
+        height: 44px;
+        min-height: 44px;
+    }
+}
