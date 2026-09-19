@@ -526,7 +526,7 @@ function prepararCadastroIndividual() {
             false;
 
         campoImagem.required =
-            true;
+            !produtoEditando;
     }
 
 
@@ -755,7 +755,10 @@ if (formulario) {
             }
 
 
-            if (!imagem) {
+            if (
+                !imagem &&
+                !produtoEditando
+            ) {
 
                 mostrarMensagem(
                     "Escolha uma imagem para o produto."
